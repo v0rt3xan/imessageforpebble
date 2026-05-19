@@ -100,6 +100,9 @@
         flex-direction: column;
         gap: 14px;
       }
+      h3:not(:last-child) {
+        margin-top: 0;
+      }
 
       .card {
         background: var(--card);
@@ -123,6 +126,55 @@
       .card.warning-card li,
       .card.warning-card .help {
         color: var(--warning-card-text);
+      }
+
+      details.troubleshooting-card {
+        padding: 0;
+        overflow: hidden;
+      }
+
+      details.troubleshooting-card > summary {
+        list-style: none;
+        cursor: pointer;
+        padding: 14px;
+        font-size: 25px;
+        font-weight: 700;
+      }
+
+      details.troubleshooting-card > summary::marker,
+      details.troubleshooting-card > summary::-webkit-details-marker {
+        display: none;
+        content: "";
+      }
+
+      details.troubleshooting-card > summary::after {
+        content: "Show";
+        float: right;
+        margin-top: 9px;
+        font-size: 11px;
+        font-weight: 600;
+        letter-spacing: 0.04em;
+        text-transform: uppercase;
+        color: var(--muted);
+      }
+
+      details.troubleshooting-card[open] > summary::after {
+        content: "Hide";
+      }
+
+      .troubleshooting-content {
+        border-top: 1px solid var(--card-border);
+        padding: 12px 14px 14px;
+      }
+
+      .troubleshooting-list {
+        margin: 0 0 0 18px;
+        padding: 0;
+        color: var(--muted);
+      }
+
+      .troubleshooting-list li {
+        margin: 0 0 10px;
       }
 
       h1 {
@@ -230,6 +282,25 @@
       a.btn.secondary {
         background: var(--secondary-bg);
         color: var(--secondary-text);
+      }
+
+      a.btn.discord {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: #5865f2;
+        color: #ffffff;
+      }
+
+      a.btn.discord:hover {
+        background: #4752c4;
+      }
+
+      .btn-icon {
+        width: 18px;
+        height: 18px;
+        display: block;
+        flex: 0 0 auto;
       }
 
       button.link {
@@ -421,6 +492,15 @@
         border-bottom: none;
       }
 
+      .automation-config-image {
+        display: block;
+        width: 100%;
+        max-width: 460px;
+        height: auto;
+        margin: 1em 0;
+        border-radius: 12px;
+      }
+
       @media (max-width: 620px) {
         body {
           padding: 8px;
@@ -467,9 +547,23 @@
           message.
         </p>
         <p>
-          The whole process takes less than ten seconds and requires no
-          intervention after you hit send on the Pebble.
+          Patch uses Outlook since it's free and supports push notifications to
+          iOS.
         </p>
+        <p>
+          The whole process takes less than ten seconds and requires no
+          interaction after you hit send on the Pebble.
+        </p>
+        <div class="btn-row" style="margin-top: 10px">
+          <a
+            class="btn discord"
+            target="_blank"
+            rel="noopener noreferrer"
+            href="https://discord.gg/UhGFraHKBJ"
+            ><img class="btn-icon" src="img/discord.svg" alt="" />Join the Patch
+            Discord</a
+          >
+        </div>
       </div>
       <div class="card warning-card">
         <h2>Heads up!</h2>
@@ -480,7 +574,7 @@
         <p>
           If someone can access your device logs, browser/session storage, or
           your Outlook account, they may be able to view message metadata or
-          send mail. For best safety, use a dedicated Outlook account.
+          send mail. For best safety, create a new Outlook account for Patch.
         </p>
       </div>
       <div class="card">
@@ -505,8 +599,8 @@
               rel="noopener noreferrer"
               href="https://support.microsoft.com/en-us/office/set-up-an-outlook-account-on-the-ios-mail-app-7e5b180f-bc8f-45cc-8da1-5cefc1e633d1"
               >(Guide)</a
-            >. The email must end with "@outlook.com". Patch uses Outlook since
-            it's free and supports push notifications to iOS.
+            >. The email must end with "@outlook.com". Be sure the account is
+            set to <b>push</b> notifications, not fetch.
           </li>
           <li>
             <a
@@ -531,8 +625,8 @@
             >.
           </li>
           <li>
-            Navigate to the <b>Automations</b> tab. Create a new automation and
-            select <b>Email</b>.
+            In the Shortcuts app, navigate to the <b>Automations</b> tab. Create
+            a new automation and select <b>Email</b>.
           </li>
 
           <li>
@@ -540,7 +634,7 @@
             "example@outlook.com":
             <!-- <div class="shortcut-table-wrap"> -->
             <img
-              style="margin: 1em; max-width: 460px; border-radius: 12px"
+              class="automation-config-image"
               src="img/automation-config.png"
             />
             <!-- </div> -->
@@ -550,6 +644,10 @@
             Shortcut library.
           </li>
         </ol>
+      </div>
+
+      <div class="card">
+        <h2>Configuration</h2>
 
         <div
           class="section"
@@ -672,7 +770,7 @@
         </div>
 
         <div class="section">
-          <h3>Message Routing</h3>
+          <h3>Email Address</h3>
           <div class="row">
             <label for="targetEmail">Your Outlook Email Address</label>
             <input
@@ -737,6 +835,51 @@
           </button>
         </div>
       </div>
+
+      <details class="card troubleshooting-card">
+        <summary>Troubleshooting</summary>
+        <div class="troubleshooting-content">
+          <ul class="troubleshooting-list">
+            <li>
+              After you log in to your Outlook account on this page, be sure to
+              hit the <b>Save</b> button.
+            </li>
+            <li>
+              Emails may be routed to your Junk folder. If this happens, log in
+              to Outlook through a browser and mark them as not spam.
+            </li>
+            <li>
+              Ensure the Outlook account you're using is configured to receive
+              push notifications by going to:
+              <span class="mono" style="white-space: nowrap"
+                >Settings -&gt; Apps -&gt; Mail -&gt; Mail Accounts -&gt; Fetch
+                New Data -&gt; (whatever your outlook mail account is named)
+                -&gt; Push</span
+              >.
+            </li>
+            <li>
+              If emails are being sent, but the automation isn't triggering, be
+              sure that the Mail app and the Outlook account have notifications
+              enabled.
+            </li>
+            <li>
+              In the Patch Shortcut, ensure that "Show When Run" is turned
+              <b>OFF</b> on the Message block. You will need to click the arrow
+              on the block to see this setting.
+            </li>
+            <li>
+              Some users report signing into your Microsoft account first in
+              these settings, <em>then</em> setting up the Shortcuts automations
+              can fix issues.
+            </li>
+
+            <li>
+              If you just can't get the automation to trigger, restart your iOS
+              device.
+            </li>
+          </ul>
+        </div>
+      </details>
     </div>
 
     <script>
