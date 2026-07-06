@@ -25,3 +25,5 @@ The hosted page receives OAuth callbacks, returns callback payload/settings to P
 
 - Default mode uses the shared Entra client ID: `b9260194-8028-48ae-8907-e30182eda409`
 - Optional mode uses **Bring your own Entra app** from the config page dropdown, including a short self-host tutorial.
+
+- I am forking this for personal use. that does not mean you can use the website in your own app, this is @mattnovelli's work and i respect that.
