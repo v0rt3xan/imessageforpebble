@@ -1,12 +1,12 @@
 {
-  "name": "patch",
-  "author": "Matthew Novelli",
+  "name": "Messages",
+  "author": "sebastian o",
   "version": "1.0.0",
-  "description": "Patch is a Pebble voice-to-message relay app that enables iOS users to send text messages through a frankly insane workaround.",
-  "homepage": "https://mattnovelli.github.io/patch/",
+  "description": "pMessages is a voice-to-text relay, that also sends iMessages, you need a Outlook account, a iPhone, a Pebble watch with a microphone, and Apple Shortcuts",
+  "homepage": "https://",
   "repository": {
     "type": "git",
-    "url": "https://github.com/mattnovelli/patch.git"
+    "url": "https://github.com/mattnovelli/.git"
   },
   "bugs": {
     "url": "https://github.com/mattnovelli/patch/issues"
@@ -25,7 +25,7 @@
     "pebble-clay": "^1.0.4"
   },
   "pebble": {
-    "displayName": "Patch",
+    "displayName": "Messages",
     "uuid": "b6b5f1c9-2a6b-4b35-bc5b-7b2e6fb6f5cc",
     "sdkVersion": "3",
     "enableMultiJS": true,
