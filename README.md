@@ -1,8 +1,7 @@
 <img style="max-height:5em" src="docs\img\patch-header.svg" />
 
 ## Voice-to-Text Messaging for Pebble on iOS
-
-Patch harnesses the power of iOS automation to send text messages from your Pebble.
+pMessages harnesses the power of iOS automation to send text messages from your Pebble.
 
 Patch requires the Apple Shortcuts app and a Microsoft Outlook account (yes, you read that right!). Since Outlook supports push notifications, and shortcuts supports sending text messages when an email comes in, we can combine the two to create a text-sending workflow!
 
